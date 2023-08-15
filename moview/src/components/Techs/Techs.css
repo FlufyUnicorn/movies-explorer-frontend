@@ -92,6 +92,13 @@
   }
 }
 
+@media screen and (max-width: 680px) {
+  .techs__items {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .techs {
     padding: 70px 18px;
@@ -118,9 +125,9 @@
   }
 
   .techs__items {
-    flex-wrap: wrap;
     row-gap: 10px;
   }
+
   .techs__item:last-child {
     margin: 0;
   }

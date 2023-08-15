@@ -1,11 +1,9 @@
 import './NavTab.css';
 
-function NavTab() {
+function NavTab(props) {
   return (
     <nav className='nav'>
-      <a className='nav__link' href='#project'>О проекте</a>
-      <a className='nav__link' href='#techs'>Технологии</a>
-      <a className='nav__link' href='#student'>Студент</a>
+      {props.links.map(item => <a className='nav__link' href={item.href} key={item.text}>{item.text}</a>)}
     </nav>
   )
 }

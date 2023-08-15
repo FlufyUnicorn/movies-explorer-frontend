@@ -3,6 +3,7 @@
   justify-content: flex-end;
   width: 100%;
   color: black;
+  height: 100%;
 }
 
 .navigation__wrapper {
@@ -18,16 +19,8 @@
   column-gap: 16px;
   list-style-type: none;
   padding: 0;
+  margin: 0;
   flex-grow: 1;
-}
-
-.navigation__item_desk {
-  display: none;
-}
-
-.navigation__item_active {
-  opacity: 1;
-  font-weight: 500;
 }
 
 .navigation__link {
@@ -38,6 +31,11 @@
   line-height: 18px;
   text-decoration: none;
   color: black;
+}
+
+.navigation__link_active {
+  opacity: 1;
+  font-weight: 500;
 }
 
 .navigation__link_acc {
@@ -54,4 +52,96 @@
 
 .navigation__link:hover {
   opacity: 0.7;
+}
+
+@media screen and (min-width: 769px) {
+  .navigation__item_desk {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .4s
+  }
+
+  .navigation_visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navigation__wrapper {
+    z-index: 10;
+    background-color: white;
+    flex-basis: 520px;
+    box-sizing: border-box;
+    padding: 159px 90px 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateX(100%);
+    transition: transform .2s ease;
+  }
+
+  .navigation__wrapper_visible {
+    transform: translateX(0);
+  }
+
+  .navigation__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    row-gap: 28px;
+    margin-left: 0;
+  }
+
+  .navigation__item {
+    position: relative;
+  }
+
+  .navigation__link {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .navigation__link_active::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+  }
+
+  .navigation__item_desk {
+    display: block;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .navigation__wrapper {
+    padding: 144px 10px 48px;
+  }
+
+  .navigation__items {
+    row-gap: 24px;
+  }
+
+  .navigation__link_active::after {
+    bottom: -9px;
+  }
 }

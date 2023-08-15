@@ -3,24 +3,35 @@ import { Link, NavLink } from 'react-router-dom';
 
 import './Navigation.css';
 
-function Navigation() {
-  const [isVisible, setIsVisible] = React.useState(true);
+function Navigation(props) {
+
+  const underlineLink = (nav) => (nav.isActive
+    ? 'navigation__link navigation__link_active'
+    : 'navigation__link');
+
+  const handleOverlayClick = (event) => {
+    if (event.target.classList.contains('navigation_visible')) {
+      props.onClose()
+    }
+  }
+
+
   return (
-    <div className={`navigation ${isVisible ? 'navigation_visible' : ''}`}>
-      <nav className={`navigation__wrapper ${isVisible ? 'navigation__wrapper_visible' : ''}`}>
+    <div className={`navigation ${props.visible ? 'navigation_visible' : ''}`} onClick={handleOverlayClick}>
+      <nav className={`navigation__wrapper ${props.visible ? 'navigation__wrapper_visible' : ''}`}>
         <ul className="navigation__items">
-          <li className="navigation__item navigation__item_desk">
-            <NavLink className='navigation__link' to="/">
+          <li className='navigation__item navigation__item_desk'>
+            <NavLink className='navigation__link' to="/" onClick={props.onClose}>
               Главная
             </NavLink>
           </li>
-          <li className="navigation__item">
-            <NavLink className='navigation__link' to="/movies">
+          <li className='navigation__item'>
+            <NavLink className={underlineLink} to="/movies" onClick={props.onClose}>
               Фильмы
             </NavLink>
           </li>
-          <li className="navigation__item">
-            <NavLink className='navigation__link' to="/saved-movies">
+          <li className='navigation__item'>
+            <NavLink className={underlineLink} to="/saved-movies" onClick={props.onClose}>
               Сохраненные фильмы
             </NavLink>
           </li>

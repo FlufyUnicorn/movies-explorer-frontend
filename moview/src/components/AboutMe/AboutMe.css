@@ -76,6 +76,12 @@
   object-position: center;
 }
 
+@media screen and (max-width: 950px) {
+  .about__content {
+    column-gap: 60px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .about {
     padding: 90px 50px 91px;
@@ -113,7 +119,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 580px) {
   .about {
     display: flex;
     flex-direction: column;

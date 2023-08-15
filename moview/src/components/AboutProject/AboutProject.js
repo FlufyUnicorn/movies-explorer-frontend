@@ -22,8 +22,8 @@ function AboutProject() {
           </li>
         </ul>
         <ul className="about-project__steps">
-          <li className="about-project__step about-project__step_first">
-            <h4 className="about-project__step-title about-project__step-title_first">1 неделя</h4>
+          <li className="about-project__step about-project__step-first">
+            <h4 className="about-project__step-title about-project__step-title-first">1 неделя</h4>
             <p className="about-project__step-description">Back-end</p>
           </li>
           <li className="about-project__step">

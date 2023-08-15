@@ -12,11 +12,11 @@ function Main() {
     <>
       <Header/>
       <Promo/>
-      <NavTab/>
+      <NavTab links = {[{href: '#project', text:'О проекте'}, {href: '#techs', text:'Технологии'}, {href: '#student', text:'Студент'}]}/>
       <AboutProject/>
       <Techs/>
       <AboutMe/>
-      <Portfolio/>
+      <Portfolio links = {[{href: 'https://github.com/FlufyUnicorn/how-to-learn', text:'Статичный сайт'}, {href: 'https://github.com/FlufyUnicorn/russian-travel', text:'Адаптивный сайт'},{href: 'https://github.com/FlufyUnicorn/react-mesto-api-full-gha', text:'Одностраничное приложение'}]}/>
       <Footer/>
     </>
   )
