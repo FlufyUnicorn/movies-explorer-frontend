@@ -14,34 +14,23 @@ function Header() {
 
   const handleTogglePopup = () => {
     setIsOpened((open) => !open);
-    if (isOpened) {
-      document.body.style.overflow = 'auto';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  };
+  }
 
-  // const handleTogglePopup = () => {
-  //   setIsOpened((open) => !open);
-  // }
-  //
-  // React.useEffect(() => {
-  //   if (isOpened) {
-  //     document.body.style.overflow = 'auto';
-  //   } else {
-  //     document.body.style.overflow = 'hidden';
-  //   }
-  //
-  // }, [isOpened]);
+  React.useEffect(() => {
+    if (isOpened) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpened]);
 
   const handleClosePopup = () => {
     setIsOpened(false);
-    document.body.style.overflow = 'auto';
   };
 
   return (
     <header className={`header ${isMainPage ? 'header_main-page' : ''}`}>
-      <Link className='header__logo' to='/' title='О проекте'/>
+      <Link className='header__logo' to='/'/>
       {
         !isMainPage
           ? <Navigation visible={isOpened} onClose={handleClosePopup}/>

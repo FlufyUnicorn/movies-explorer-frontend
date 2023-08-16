@@ -4,9 +4,11 @@ import Main from "../../pages/Main/Main";
 import Movies from "../../pages/Movies/Movies";
 import NotFound from "../../pages/NotFound/NotFound";
 import SavedMovies from "../../pages/SavedMovies/SavedMovies";
+import Register from "../../pages/Register/Register";
+import Login from "../../pages/Login/Login";
+import Profile from "../../pages/Profile/Profile";
 
 import './App.css';
-import Register from "../../pages/Register/Register";
 
 function App() {
   return (
@@ -30,10 +32,26 @@ function App() {
           )}
         />
         <Route
+          path='signin'
+          element={(
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <Login/>
+            </Suspense>
+          )}
+        />
+        <Route
           path='saved-movies'
           element={(
             <Suspense fallback={<div>Загрузка...</div>}>
               <SavedMovies/>
+            </Suspense>
+          )}
+        />
+        <Route
+          path='profile'
+          element={(
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <Profile name={'Анастасия'}/>
             </Suspense>
           )}
         />

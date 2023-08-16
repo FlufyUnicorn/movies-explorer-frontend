@@ -10,8 +10,10 @@
 }
 
 .search-form__input {
+  padding: 0 0 0 22px;
+  box-sizing: border-box;
   width: 100%;
-  min-height: 46px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,13 +32,19 @@
   outline: none;
   cursor: pointer;
   position: absolute;
-  top: 0;
-  right: 0;
-  margin: 6px;
+  top: 6px;
+  right: 6px;
   background-image: url('../../images/search.svg');
   background-repeat: no-repeat;
   background-position: center;
+  padding: 0;
 }
+
+.search-form__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s linear;
+}
+
 
 @media screen and (max-width: 768px){
   .search-form {
