@@ -23,6 +23,10 @@
   outline: none;
 }
 
+.search-form__input:focus {
+  border: 1px solid #FF6838;
+}
+
 .search-form__button {
   width: 80px;
   height: 34px;

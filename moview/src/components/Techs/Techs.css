@@ -115,6 +115,7 @@
     margin: 60px 0 0;
     font-size: 30px;
     letter-spacing: -1.2px;
+    line-height: normal;
   }
 
   .techs__text {
@@ -122,10 +123,20 @@
     line-height: 16px;
     letter-spacing: -0.44px;
     margin: 24px 0 50px;
+    max-width: 292px;
   }
 
   .techs__items {
     row-gap: 10px;
+    column-gap: 10px;
+    width: 178px;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+
+  .techs__item {
+    width: 84px;
+    height: 57px;
   }
 
   .techs__item:last-child {

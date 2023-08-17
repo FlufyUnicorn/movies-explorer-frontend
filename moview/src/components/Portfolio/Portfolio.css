@@ -78,7 +78,7 @@
   .portfolio__link {
     font-size: 18px;
     letter-spacing: -0.72px;
-    line-height: 22px;
+    line-height: 28px;
   }
 
   .portfolio__title {
@@ -89,5 +89,6 @@
   .portfolio__link::after {
     width: 10px;
     height: 10px;
+    margin-right: 4px;
   }
 }

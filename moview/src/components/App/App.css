@@ -1,5 +1,9 @@
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   padding: 0;
+}
+
+html {
+  height: 100%;
 }

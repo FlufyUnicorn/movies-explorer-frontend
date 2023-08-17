@@ -3,7 +3,9 @@ import FormElement from "../../components/FormElement/FormElement";
 
 function Register() {
   return (
-    <FormElement isRegister={true}/>
+    <main>
+      <FormElement isRegister={true}/>
+    </main>
   )
 }
 

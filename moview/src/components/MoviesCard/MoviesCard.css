@@ -44,6 +44,11 @@
   box-shadow: none;
 }
 
+.movie__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s linear;
+}
+
 .movie__button_saved {
   background-image: url("../../images/like.svg");
 }
