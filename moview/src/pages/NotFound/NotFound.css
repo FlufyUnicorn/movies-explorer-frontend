@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   color: #000;
+  padding-bottom: 60px;
 }
 
 .not-found__error-code {
@@ -34,13 +35,26 @@
   text-decoration: none;
 }
 
+.not-found__link:hover {
+  opacity: 0.7;
+  transition: opacity 0.4s linear;
+}
+
 @media screen and (max-width: 768px) {
+  .not-found {
+    padding-bottom: 222px;
+  }
+
   .not-found__error-code {
     margin: 408px 0 0;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .not-found {
+    padding-bottom: 30px;
+  }
+
   .not-found__error-code {
     margin: 329px 0 0;
   }

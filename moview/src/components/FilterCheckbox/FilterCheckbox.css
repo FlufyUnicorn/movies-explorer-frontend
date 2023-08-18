@@ -32,6 +32,11 @@
   height: 20px;
 }
 
+.filter__checkbox:hover::after {
+  opacity: 0.8;
+  transition: opacity 0.4s linear;
+}
+
 .filter__checkbox:focus {
   border-radius: 10px;
 }

@@ -8,10 +8,10 @@ function Footer() {
         <p className='footer__year'>© {new Date().getFullYear()}</p>
         <ul className='footer__links'>
           <li className='footer__link-container'>
-            <a className='footer__link' href='https://practicum.yandex.ru'>Яндекс.Практикум</a>
+            <a className='footer__link' href='https://practicum.yandex.ru' target='_blank'>Яндекс.Практикум</a>
           </li>
           <li className='footer__link-container'>
-            <a className='footer__link' href='https://github.com/FlufyUnicorn'>Github</a>
+            <a className='footer__link' href='https://github.com/FlufyUnicorn' target='_blank'>Github</a>
           </li>
         </ul>
       </div>

@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 74px auto 70px;
+  margin: 0 auto;
+  padding: 74px 0 70px;
   width: 410px;
   color: #000;
 }
@@ -27,7 +28,7 @@
   flex-direction: column;
   align-items: center;
   row-gap: 16px;
-  margin: 220px 0 0;
+  margin: 203px 0 0;
 }
 
 .profile__label {
@@ -76,7 +77,8 @@
 
 @media screen and (max-width: 768px) {
   .profile {
-    margin: 236px auto 269px;
+    margin: 0 auto;
+    padding: 236px 0 269px;
   }
 
   .profile__wrapper {
@@ -84,7 +86,7 @@
   }
 
   .profile__links {
-    margin: 210px 0 0;
+    margin: 193px 0 0;
   }
 
   .profile__label {
@@ -94,7 +96,8 @@
 
 @media screen and (max-width: 500px) {
   .profile {
-    margin: 70px auto 40px;
+    margin: 0 auto;
+    padding: 70px 0 40px;
     width: 260px;
   }
 
@@ -103,7 +106,7 @@
   }
 
   .profile__links {
-    margin: 379px 0 0;
+    margin: 367px 0 0;
   }
 
   .profile__link {
