@@ -1,10 +1,10 @@
 import './Login.css';
 import FormElement from "../../components/FormElement/FormElement";
 
-function Login() {
+function Login(props) {
   return (
     <main>
-      <FormElement isRegister={false}/>
+      <FormElement isRegister={false} handleSubmit={props.handleLogin}/>
     </main>
   )
 }
