@@ -13,7 +13,6 @@ class Api {
   register(name, email, password) {
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name,
@@ -26,7 +25,6 @@ class Api {
   login(email, password) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     }).then(res => this._handleResponse(res));
