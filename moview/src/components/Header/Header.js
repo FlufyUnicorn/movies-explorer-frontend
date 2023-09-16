@@ -1,12 +1,12 @@
-import {Link, useLocation} from 'react-router-dom';
 import React from "react";
+import {Link, useLocation} from 'react-router-dom';
 import Navigation from "../Navigation/Navigation";
 import burger from '../../images/burger.svg';
 import close from '../../images/close.svg'
 
 import './Header.css';
 
-function Header() {
+function Header(props) {
   const {pathname: location} = useLocation()
   const isMainPage = location === '/';
 
@@ -32,7 +32,7 @@ function Header() {
     <header className={`header ${isMainPage ? 'header_main-page' : ''}`}>
       <Link className='header__logo' to='/'/>
       {
-        !isMainPage
+        !isMainPage || props.loggedIn
           ? <Navigation visible={isOpened} onClose={handleClosePopup}/>
           : (
             <nav className="header__auth">

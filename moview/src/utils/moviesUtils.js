@@ -36,8 +36,26 @@ function transformMovies(movies) {
   return movies
 }
 
+function getLikedMovies(arr, movie) {
+  return arr.find((item) => {
+    return item.movieId === (movie.id || movie.movieId);
+  });
+}
+
+function parseDuration(duration) {
+  const hours = Math.trunc(duration / 60);
+  const minutes = duration % 60;
+  if(hours === 0) {
+    return `${minutes}м`;
+  } else {
+    return `${hours}ч ${minutes}м`;
+  }
+}
+
 export {
   transformMovies,
   filterMovies,
   filterShortMovies,
+  getLikedMovies,
+  parseDuration,
 };

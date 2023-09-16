@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigate, useNavigate, Route, Routes, useLocation} from "react-router-dom";
+import {useNavigate, Route, Routes, useLocation} from "react-router-dom";
 import Main from "../../pages/Main/Main";
 import Movies from "../../pages/Movies/Movies";
 import NotFound from "../../pages/NotFound/NotFound";
@@ -10,7 +10,6 @@ import Profile from "../../pages/Profile/Profile";
 import Preloader from "../Preloader/Preloader";
 import ProtectedRoute from "../ProtectedRoute/PotectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
-
 import UserContext from "../../context/UserContext";
 import mainApi from '../../utils/MainApi.js';
 
@@ -47,8 +46,7 @@ function App() {
           localStorage.setItem('jwt', jwt.token);
           setLoggedIn(true);
           navigate('/movies');
-          setIsInfoTooltip({isOpen: true, successful: true, text: 'Добро пожаловать!'})
-        }
+          }
       }))
       .catch((err) => {
         setIsInfoTooltip({isOpen: true, successful: false, text: err})
@@ -62,9 +60,7 @@ function App() {
     setIsLoader(true);
     mainApi.register(name, email, password)
       .then((user => {
-        if (user._id) {
-          handleLogin({email, password});
-        }
+        navigate('/signin');
       }))
       .catch((err) => {
         setIsInfoTooltip({isOpen: true, successful: false, text: err});
@@ -89,7 +85,7 @@ function App() {
     mainApi.addMovie(movie)
       .then((newMovie) => {
         setLikedMoviesList([newMovie, ...likedMoviesList]);
-        setIsInfoTooltip({isOpen: true, successful: false, text: 'Фильм добавлен в избранное'});
+        setIsInfoTooltip({isOpen: true, successful: true, text: 'Фильм добавлен в избранное'});
       })
       .catch((err) => {
         setIsInfoTooltip({isOpen: true, successful: false, text: err});
@@ -104,6 +100,7 @@ function App() {
           return (!(movie.id === m.movieId || movie.movieId === m.movieId))
         })
         setLikedMoviesList(moviesList);
+        setIsInfoTooltip({isOpen: true, successful: true, text: 'Фильм удален из избранного'});
       })
       .catch((err) => {
         setIsInfoTooltip({isOpen: true, successful: false, text: err});
@@ -195,7 +192,7 @@ function App() {
                 loggedIn={loggedIn}
                 setIsLoader={setIsLoader}
                 setIsInfoTooltip={setIsInfoTooltip}
-                savedMoviesList={likedMoviesList}
+                likedMoviesList={likedMoviesList}
                 onLikeClick={handleLikeMovie}
                 onDeleteClick={handleDislikeMovie}
               />
@@ -207,7 +204,7 @@ function App() {
               <ProtectedRoute
                 element={SavedMovies}
                 loggedIn={loggedIn}
-                savedMoviesList={likedMoviesList}
+                likedMoviesList={likedMoviesList}
                 onDeleteClick={handleDislikeMovie}
                 setIsInfoTooltip={setIsInfoTooltip}
               />

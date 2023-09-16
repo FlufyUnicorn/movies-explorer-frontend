@@ -7,10 +7,10 @@ import Portfolio from "../../components/Portfolio/Portfolio";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 
-function Main() {
+function Main(props) {
   return (
     <>
-      <Header/>
+      <Header loggedIn={props.loggedIn}/>
       <main>
         <Promo/>
         <NavTab links={[{href: '#project', text: 'О проекте'}, {href: '#techs', text: 'Технологии'}, {

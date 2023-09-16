@@ -1,13 +1,14 @@
 import React from "react";
 import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import UserContext from "../../context/UserContext";
 import moviesApi from '../../utils/MoviesApi';
 import {filterShortMovies, filterMovies, transformMovies} from '../../utils/moviesUtils';
 import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import UserContext from "../../context/UserContext";
 
 function Movies(props) {
-  const currentUser = React.useContext(UserContext)
+  const currentUser = React.useContext(UserContext);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [NotFound, setNotFound] = React.useState(false);
   const [shortMovies, setShortMovies] = React.useState(false);
@@ -24,8 +25,8 @@ function Movies(props) {
     localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies);
   }
 
-  function handleFilterMovies(movies, userQuery, shortMoviesCheckbox) {
-    const moviesList = filterMovies(movies, userQuery, shortMoviesCheckbox);
+  function handleFilterMovies(movies, query, moviesCheckbox) {
+    const moviesList = filterMovies(movies, query, moviesCheckbox);
     if (moviesList.length === 0) {
       props.setIsInfoTooltip({
         isOpen: true,
@@ -37,7 +38,7 @@ function Movies(props) {
       setNotFound(false);
     }
     setInitialMovies(moviesList);
-    setFilteredMovies(shortMoviesCheckbox ? filterShortMovies(moviesList) : moviesList);
+    setFilteredMovies(moviesCheckbox ? filterShortMovies(moviesList) : moviesList);
     localStorage.setItem(
       `${currentUser.email} - movies`,
       JSON.stringify(moviesList));
@@ -89,6 +90,7 @@ function Movies(props) {
 
   return (
     <>
+      <Header/>
       <main>
         <SearchForm
           handleShortFilms={handleShortFilms}
@@ -98,7 +100,7 @@ function Movies(props) {
         {!NotFound && (
           <MoviesCardList
             moviesList={filteredMovies}
-            savedMoviesList={props.savedMoviesList}
+            likedMoviesList={props.likedMoviesList}
             onLikeClick={props.onLikeClick}
             onDeleteClick={props.onDeleteClick}
           />

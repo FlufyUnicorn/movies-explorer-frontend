@@ -59,7 +59,7 @@ function FormElement(props) {
             id="password"
             name="password"
             type="password"
-            placeholder="password"
+            placeholder="Пароль"
             onChange={handleChange}
             value={values.password || ''}
             required

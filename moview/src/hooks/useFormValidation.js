@@ -8,7 +8,6 @@ export default function useFormValidation() {
 
   const handleChange = (evt) => {
     const input = evt.target;
-    //const { value, name } = input;
 
     if (input.name === 'name' && input.validity.patternMismatch) {
       input.setCustomValidity('Имя должно содержать только латиницу, кириллицу, пробел или дефис.')
@@ -24,12 +23,12 @@ export default function useFormValidation() {
       }
     }
 
-    setValues({ ...values, [input.name]: input.value }); // универсальный обработчик полей
-    setErrors({ ...errors, [input.name]: input.validationMessage }); // ошибок
-    setIsValid(input.closest('form').checkValidity()); // проверка валидности
+    setValues({ ...values, [input.name]: input.value });
+    setErrors({ ...errors, [input.name]: input.validationMessage });
+    setIsValid(input.closest('form').checkValidity());
   };
   const updateForm = React.useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => { // это метод для сброса формы, полей, ошибок
+    (newValues = {}, newErrors = {}, newIsValid = false) => {
       setValues(newValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
