@@ -42,7 +42,7 @@
 
 ---
 ## *Ссылки:*
-
+* Ссылка на [пулл-реквест](https://github.com/FlufyUnicorn/movies-explorer-frontend/pull/3)
 * Домен, по которому доступно приложение [http://moview.students.nomoreparties.co/](http://moview.students.nomoreparties.co/)
 * Домен с бэкендом [http://api.moview.students.nomoreparties.co/](http://api.moview.students.nomoreparties.co/)
 * Публичный IP адрес сервера `51.250.66.186`
