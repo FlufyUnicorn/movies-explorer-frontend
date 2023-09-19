@@ -20,22 +20,13 @@ function App() {
   const navigate = useNavigate();
   const [isLoader, setIsLoader] = React.useState(false);
   const [load, setLoad] = React.useState(false);
-  const [isBurgerOpened, setIsBurgerOpened] = React.useState(false);
   const [isInfoTooltip, setIsInfoTooltip] = React.useState({isOpen: false, successful: true, text: ''});
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [likedMoviesList, setLikedMoviesList] = React.useState([]);
 
-  function onClickBurger() {
-    setIsBurgerOpened(!isBurgerOpened);
-  }
-
   function closeInfoTooltip() {
     setIsInfoTooltip({...isInfoTooltip, isOpen: false});
-  }
-
-  function goBack() {
-    navigate.goBack();
   }
 
   function handleLogin({email, password}) {
@@ -59,9 +50,9 @@ function App() {
   function handleRegister({name, email, password}) {
     setIsLoader(true);
     mainApi.register(name, email, password)
-      .then((user => {
-        navigate('/signin');
-      }))
+      .then((user) => {
+          handleLogin({ email, password });
+      })
       .catch((err) => {
         setIsInfoTooltip({isOpen: true, successful: false, text: err});
       })
@@ -166,8 +157,7 @@ function App() {
           setIsInfoTooltip({isOpen: true, successful: false, text: err});
         });
     }
-  }, [currentUser, loggedIn]);
-
+  }, [loggedIn]);
   return (
     <UserContext.Provider value={currentUser}>
       <div className="page">
@@ -221,7 +211,7 @@ function App() {
               />
             }
           />
-          <Route path='*' element={<NotFound goBack={goBack}/>}/>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
         <Preloader isOpen={isLoader}/>
         <InfoTooltip

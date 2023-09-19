@@ -14,6 +14,7 @@ function SavedMovies(props) {
   const [filteredMovies, setFilteredMovies] = React.useState(showedMovies);
   const [shortMovies, setShortMovies] =React.useState(false);
   const [NotFound, setNotFound] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState('');
 
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(props.likedMoviesList, inputValue, shortMovies);
@@ -52,15 +53,15 @@ function SavedMovies(props) {
   }, [props.likedMoviesList, currentUser]);
 
   React.useEffect(() => {
-    setFilteredMovies(props.likedMoviesList);
-    props.likedMoviesList.length !== 0 ? setNotFound(false) : setNotFound(true);
+    if (inputValue) {
+      handleSearchSubmit(inputValue)
+    }
   }, [props.likedMoviesList]);
-
   return (
     <>
       <Header/>
       <main className='main'>
-        <SearchForm handleSearchSubmit={handleSearchSubmit} handleShortFilms={handleShortFilms} shortMovies={shortMovies}/>
+        <SearchForm handleSearchSubmit={handleSearchSubmit} handleShortFilms={handleShortFilms} shortMovies={shortMovies} onChangeSearch={setInputValue}/>
         {!NotFound && (
           <MoviesCardList moviesList={showedMovies} likedMoviesList={props.likedMoviesList} onDeleteClick={props.onDeleteClick}/>
         )}

@@ -29,6 +29,12 @@ function SearchForm(props) {
     }
   }, [currentUser]);
 
+  React.useEffect(() => {
+    if (props.onChangeSearch) {
+      props.onChangeSearch(values.search)
+    }
+  }, [values.search])
+
   return (
     <section className='search-form'>
       <form className="search-form__input-container" name='search' noValidate onSubmit={handleSubmit}>

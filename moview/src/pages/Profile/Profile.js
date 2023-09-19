@@ -37,7 +37,6 @@ function Profile(props) {
                 onChange={handleChange}
                 value={values.name || ''}
               />
-              {/*<span className="profile__error">{errors.name || ''}</span>*/}
             </label>
             <label className="profile__label">
               <span className="profile__label-text">E-mail</span>
@@ -49,7 +48,6 @@ function Profile(props) {
                 onChange={handleChange}
                 value={values.email || ''}
               />
-              {/*<span className="profile__error">{errors.email || ''}</span>*/}
             </label>
             <div className="profile__links">
               <button className="profile__link" disabled={validity}>Редактировать</button>

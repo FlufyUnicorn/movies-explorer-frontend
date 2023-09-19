@@ -63,7 +63,7 @@ function Movies(props) {
           props.setIsInfoTooltip({
             isOpen: true,
             successful: false,
-            text: 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
+            text: 'Во время запроса произошла ошибка.'
           })
         )
         .finally(() => props.setIsLoader(false));
@@ -105,7 +105,7 @@ function Movies(props) {
             props.setIsInfoTooltip({
               isOpen: true,
               successful: false,
-              text: 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
+              text: 'Во время запроса произошла ошибка.'
             })
             console.log(e)
           }
