@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 
 import './Navigation.css';
 
 function Navigation(props) {
+  const {pathname: location} = useLocation();
   const underlineLink = (nav) => (nav.isActive
     ? 'navigation__link navigation__link_active'
     : 'navigation__link');
@@ -22,13 +23,13 @@ function Navigation(props) {
             <NavLink className='navigation__link' to="/" onClick={props.onClose}>Главная</NavLink>
           </li>
           <li className='navigation__item'>
-            <NavLink className={underlineLink} to="/movies" onClick={props.onClose}>Фильмы</NavLink>
+            <NavLink className={`${underlineLink(NavLink)} ${location==='/' ? 'navigation__link_main-page' : ''}`} to="/movies" onClick={props.onClose}>Фильмы</NavLink>
           </li>
           <li className='navigation__item'>
-            <NavLink className={underlineLink} to="/saved-movies" onClick={props.onClose}>Сохраненные фильмы</NavLink>
+            <NavLink className={`${location==='/' ? 'navigation__link_main-page' : ''} ${underlineLink(NavLink)}` } to="/saved-movies" onClick={props.onClose}>Сохраненные фильмы</NavLink>
           </li>
         </ul>
-        <Link className="navigation__link navigation__link_acc" to="/profile">Аккаунт</Link>
+        <Link className='navigation__link navigation__link_acc' to="/profile">Аккаунт</Link>
       </nav>
     </div>
   )

@@ -3,21 +3,21 @@ export const moviesPath = 'https://api.nomoreparties.co/beatfilm-movies';
 
 export const devices = {
   desktop: {
-    width: 917,
+    width: 1280,
     cards: {
-      total: 12,
-      more: 3,
+      total: 16,
+      more: 4,
     },
   },
   tablet: {
-    width: 583,
+    width: 768,
     cards: {
       total: 8,
       more: 2,
     },
   },
   mobile: {
-    width: 583,
+    width: 480,
     cards: {
       total: 5,
       more: 2,

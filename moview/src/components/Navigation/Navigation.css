@@ -33,6 +33,10 @@
   color: black;
 }
 
+.navigation__link_main-page {
+  color: white;
+}
+
 .navigation__link_active {
   opacity: 1;
   font-weight: 500;

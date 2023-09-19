@@ -41,7 +41,7 @@ function SearchForm(props) {
           onChange={handleChange}
           value={values.search || ''}
         />
-        <span className="search__error">{errorQuery}</span>
+        <span className="search-form__error">{errorQuery}</span>
         <button className="search-form__button" type="submit"/>
       </form>
       <FilterCheckbox shortMovies={props.shortMovies} handleShortFilms={props.handleShortFilms}/>

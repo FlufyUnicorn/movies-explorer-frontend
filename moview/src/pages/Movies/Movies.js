@@ -88,6 +88,32 @@ function Movies(props) {
     }
   }, [currentUser]);
 
+  React.useEffect(() => {
+    const userQuery = localStorage.getItem(`${currentUser.email} - movieSearch`)
+    if (!userQuery) {
+      props.setIsLoader(true);
+      moviesApi.getMovies()
+        .then(movies => {
+          setIsAllMovies(movies);
+          handleFilterMovies(
+            transformMovies(movies),
+            userQuery,
+            shortMovies
+          );
+        })
+        .catch((e) => {
+            props.setIsInfoTooltip({
+              isOpen: true,
+              successful: false,
+              text: 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
+            })
+            console.log(e)
+          }
+        )
+        .finally(() => props.setIsLoader(false));
+    }
+  },[])
+
   return (
     <>
       <Header/>
