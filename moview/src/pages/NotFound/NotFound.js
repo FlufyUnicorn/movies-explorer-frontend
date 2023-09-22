@@ -8,7 +8,6 @@ function NotFound() {
 
   function goBack() {
     navigate(-1);
-
   }
   return (
     <main>

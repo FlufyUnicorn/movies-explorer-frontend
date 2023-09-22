@@ -114,6 +114,14 @@ function Movies(props) {
     }
   },[])
 
+  React.useEffect(() => {
+    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
+      setShortMovies(true);
+    } else {
+      setShortMovies(false);
+    }
+  }, [currentUser]);
+
   return (
     <>
       <Header/>

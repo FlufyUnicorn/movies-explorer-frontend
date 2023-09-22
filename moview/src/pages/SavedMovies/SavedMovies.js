@@ -3,67 +3,38 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import UserContext from '../../context/UserContext';
-import { filterMovies, filterShortMovies } from '../../utils/moviesUtils';
+import { filterMovies } from '../../utils/moviesUtils';
 
 import './SavedMovies.css';
 
 function SavedMovies(props) {
-  const currentUser = React.useContext(UserContext);
-  const [showedMovies, setShowedMovies] = React.useState(props.likedMoviesList);
-  const [filteredMovies, setFilteredMovies] = React.useState(showedMovies);
-  const [shortMovies, setShortMovies] =React.useState(false);
+  const [activeMovies, setActiveMovies] = React.useState([]);
+  const [isCheckedShortMovies, setIsCheckedShortMovies] =React.useState(false);
   const [NotFound, setNotFound] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
 
   function handleSearchSubmit(inputValue) {
-    const moviesList = filterMovies(props.likedMoviesList, inputValue, shortMovies);
-    if (moviesList.length === 0) {
-      setNotFound(true);
-      props.setIsInfoTooltip({ isOpen: true, successful: false, text: 'Ничего не найдено.' });
-    } else {
-      setNotFound(false);
-      setFilteredMovies(moviesList);
-      setShowedMovies(moviesList);
-    }
+    const filtered = filterMovies(props.likedMoviesList, inputValue, isCheckedShortMovies);
+
+    setActiveMovies(filtered);
+    setNotFound(filtered.length === 0);
   }
 
   function handleShortFilms() {
-    if (!shortMovies) {
-      setShortMovies(true);
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true);
-      setShowedMovies(filterShortMovies(filteredMovies));
-      filterShortMovies(filteredMovies).length === 0 ? setNotFound(true) : setNotFound(false);
-    } else {
-      setShortMovies(false);
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false);
-      filteredMovies.length === 0 ? setNotFound(true) : setNotFound(false);
-      setShowedMovies(filteredMovies);
-    }
+    setIsCheckedShortMovies(!isCheckedShortMovies);
   }
 
   React.useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
-      setShortMovies(true);
-      setShowedMovies(filterShortMovies(props.likedMoviesList));
-    } else {
-      setShortMovies(false);
-      setShowedMovies(props.likedMoviesList);
-    }
-  }, [props.likedMoviesList, currentUser]);
+    handleSearchSubmit(inputValue);
+  }, [isCheckedShortMovies, props.likedMoviesList]);
 
-  React.useEffect(() => {
-    if (inputValue) {
-      handleSearchSubmit(inputValue)
-    }
-  }, [props.likedMoviesList]);
   return (
     <>
       <Header/>
       <main className='main'>
-        <SearchForm handleSearchSubmit={handleSearchSubmit} handleShortFilms={handleShortFilms} shortMovies={shortMovies} onChangeSearch={setInputValue}/>
+        <SearchForm handleSearchSubmit={handleSearchSubmit} handleShortFilms={handleShortFilms} shortMovies={isCheckedShortMovies} onChangeSearch={setInputValue} likedMoviesList={props.likedMoviesList}/>
         {!NotFound && (
-          <MoviesCardList moviesList={showedMovies} likedMoviesList={props.likedMoviesList} onDeleteClick={props.onDeleteClick}/>
+          <MoviesCardList moviesList={activeMovies} likedMoviesList={props.likedMoviesList} onDeleteClick={props.onDeleteClick}/>
         )}
         <Footer/>
       </main>
