@@ -50,7 +50,7 @@ function App() {
   function handleRegister({name, email, password}) {
     setIsLoader(true);
     mainApi.register(name, email, password)
-      .then((user) => {
+      .then(() => {
           handleLogin({ email, password });
       })
       .catch((err) => {
@@ -106,6 +106,7 @@ function App() {
   }
 
   React.useEffect(() => {
+    console.log('in useEff []')
     const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -131,6 +132,7 @@ function App() {
   }, [])
 
   React.useEffect(() => {
+    console.log('in useEff loggedIn first')
     if (loggedIn) {
       setIsLoader(true);
       mainApi.getUserInfo()
@@ -147,6 +149,7 @@ function App() {
   }, [loggedIn])
 
   React.useEffect(() => {
+    console.log('in useEff loggedIn last')
     if (loggedIn && currentUser) {
       mainApi.getMovies()
         .then((movies) => {

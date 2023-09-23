@@ -17,7 +17,13 @@ function SavedMovies(props) {
     const filtered = filterMovies(props.likedMoviesList, inputValue, isCheckedShortMovies);
 
     setActiveMovies(filtered);
-    setNotFound(filtered.length === 0);
+    if (filtered.length === 0) {
+      setNotFound(true);
+      props.setIsInfoTooltip({ isOpen: true, successful: false, text: 'Ничего не найдено' })
+    }
+    else{
+      setNotFound(false);
+    }
   }
 
   function handleShortFilms() {
