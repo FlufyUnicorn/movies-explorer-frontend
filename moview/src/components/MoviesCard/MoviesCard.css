@@ -1,0 +1,92 @@
+.movie {
+  width: 100%;
+}
+
+.movie__wrapper {
+  width: 270px;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.05);
+  border-radius: 10px 10px 0 0;
+  box-sizing: border-box;
+}
+
+.movie__image {
+  height: 151px;
+  object-fit: cover;
+  background-position: center;
+  width: 100%;
+}
+
+.movie__title {
+  color: #000;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  max-width: 206px;
+  margin: 0;
+}
+
+.movie__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px 12px 10px;
+  padding: 0;
+}
+
+.movie__button {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 16px;
+  height: 16px;
+  background-image: url("../../images/not-loke.svg");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  box-shadow: none;
+}
+
+.movie__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s linear;
+}
+
+.movie__button_saved {
+  background-image: url("../../images/like.svg");
+}
+
+.movie__button_delete {
+  background-image: url("../../images/delete.svg");
+}
+
+.movie__duration {
+  color: #A0A0A0;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 14px 12px;
+}
+
+@media screen and (max-width:768px) {
+  .movie__image {
+    width: 339px;
+    height: 168px;
+  }
+
+  .movie__wrapper {
+    width: 339px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .movie__image {
+    width: 300px;
+    height: 190px;
+  }
+
+  .movie__wrapper {
+    width: 300px;
+  }
+}

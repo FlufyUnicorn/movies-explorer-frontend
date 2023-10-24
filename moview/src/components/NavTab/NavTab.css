@@ -1,0 +1,31 @@
+.nav {
+  background-color: #F5F5F5;
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  column-gap: 40px;
+}
+
+.nav__link {
+  color: #000;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration-line: underline;
+}
+
+.nav__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 500px){
+  .nav {
+    padding: 25px 0;
+    column-gap: 24px;
+  }
+
+  .nav__link {
+    font-size: 11px;
+  }
+}
